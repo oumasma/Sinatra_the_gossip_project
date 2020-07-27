@@ -1,0 +1,20 @@
+<!--un fichier .erb est un fichier HTML dans lequel tu peux y rajouter du Ruby.-->
+<!--index : c'est la view qui liste tous les gossip présents en BDD.-->
+
+<html>
+	<head>
+		<title>The Gossip Project</title>
+	</head>
+	<body>
+		<h1>Mon super site de gossip, depuis le dossier views !</h1>
+		<p>Bienvenue ! La liste de potins arrive bientôt, en attendant crée un nouveau potin !</p>
+		<a href="/gossips/new/">crée un nouveau potin</a>
+
+		<% gossips.each do |gossip| %>
+      <p>
+        <%= gossip.author %><br/>
+        <%= gossip.content %>
+      </p>
+    <% end %>
+	</body>
+</html>
