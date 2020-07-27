@@ -6,14 +6,15 @@
 		<title>The Gossip Project</title>
 	</head>
 	<body>
-		<h1>Mon super site de gossip, depuis le dossier views !</h1>
-		<p>Bienvenue ! La liste de potins arrive bientôt, en attendant crée un nouveau potin !</p>
+		<h1>Les gossips bienveillants de The Hacking Project!</h1>
+		<p>Bienvenue ! Envie de dire du bien des tes co-mousaillons ? Crée un nouveau potin !</p>
 		<a href="/gossips/new/">crée un nouveau potin</a>
 
-		<% gossips.each do |gossip| %>
+		<% gossips.each_with_index do |gossip, index| %>
       <p>
-        <%= gossip.author %><br/>
-        <%= gossip.content %>
+        L'auteur du potin : <%= gossip.author %><br/>
+        Le potin : <%= gossip.content %>
+        <a href="./gossips/<%= index %>/"> Afficher ce gossip</a>
       </p>
     <% end %>
 	</body>
