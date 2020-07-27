@@ -10,12 +10,13 @@ class ApplicationController < Sinatra::Base    # hérite de toutes les fonctionn
   end
 
   post '/gossips/new/' do  
-  	Gossip.new(params["gossip_author"], params["gossip_content"]).save #on crée un gossip et on l'enregistre
+  	Gossip.new(params["gossips_author"], params["gossips_content"]).save #on crée un gossip et on l'enregistre
   	redirect '/' #on redirige après quoi vers la page d'accueil
 	end
 
-	#get '/gossip/:id' do
+	get '/gossips/:id/' do
+		erb :show, locals: {gossips: Gossip.find(params[:id])}
   
-	#end
+	end
 
 end

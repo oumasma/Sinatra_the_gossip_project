@@ -19,12 +19,16 @@ attr_accessor :author, :content
 	  all_gossips = []     # on initialise un array vide
 		CSV.read("./db/gossip.csv").each do |csv_line|   # va chercher chacune des lignes du csv do
 	    all_gossips << Gossip.new(csv_line[0], csv_line[1])   # crée un gossip avec les infos de la ligne
-  end
+  	end
  	 return all_gossips #on retourne un array rempli d'objets Gossip
 	end
 
-	def self.find(id)
-		return Gossip.all[id]
+	def self.find(id) 
+		this_gossip = []    
+			CSV.read("./db/gossip.csv").select.with_index do |line, i|   
+	      this_gossip << Gossip.new(line[0], line[1]) if id.to_i == i  
+	   	end
+	  return this_gossip
 	end
 	 
 end
